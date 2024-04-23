@@ -1,6 +1,7 @@
 import {FC, useEffect, useMemo, useRef, useState} from 'react';
 import {createMap, MapApi} from '@unfolded/map-sdk';
 import {SampleDataItem, fetchSampleData} from './sample-data';
+import { mapConfig } from './map-config';
 
 export const App: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,31 +26,143 @@ export const App: FC = () => {
 
   useEffect(() => {
     if (map && sampleData && sampleData.length > 0) {
+      
       map.addDataset(sampleData[0], {autoCreateLayers: false});
       map.addLayer({
         type: 'grid',
-        dataId: 'earthquakes',
+        label: 'Try Inf Data',
+        dataId: 'data-try-inf',
         fields: {
-          lat: 'Latitude',
-          lng: 'Longitude'
+          lat: 'mesto_latitude',
+          lng: 'mesto_longitude'
         },
+        isVisible: true,
         config: {
-          visConfig: {
-            worldUnitSize: 26,
-            elevationScale: 90,
-            enable3d: true
+          "visConfig": {
+            "opacity": 0.8,
+            "worldUnitSize": 9.7403,
+            "colorRange": {
+              "name": "Global Warming",
+              "type": "sequential",
+              "category": "Uber",
+              "colors": [
+                "#FFC300",
+                "#EF9100",
+                "#D6610A",
+                "#B72F15",
+                "#880030",
+                "#4C0035"
+              ],
+              "reversed": true
+            },
+            "coverage": 1,
+            "sizeRange": [
+              0,
+              850.88
+            ],
+            "percentile": [
+              0,
+              100
+            ],
+            "elevationPercentile": [
+              0,
+              100
+            ],
+            "elevationScale": 6.5,
+            "enableElevationZoomFactor": true,
+            "fixedHeight": false,
+            "colorAggregation": "average",
+            "sizeAggregation": "average",
+            "enable3d": true
+          },
+          "visualChannels": {
+            "colorField": {
+              "type": "integer",
+              "name": "judgment"
+            },
+            "colorScale": "quantile",
+            "sizeField": {
+              "type": "integer",
+              "name": "judgment"
+            },
+            "sizeScale": "linear"
           }
         }
       });
       map.setMapConfig({
-        version: 'v1',
-        config: {
-          mapState: {
-            pitch: 50,
-            bearing: 24,
-            mapViewMode: 'MODE_3D'
+        "mapState": {
+          "bearing": -7.213235294117645,
+          "dragRotate": true,
+          "latitude": 44.0572155,
+          "longitude": 18.0231654,
+          "pitch": 42.450331125827816,
+          "zoom": 6.811646295006886,
+          "isSplit": true,
+          "isViewportSynced": true,
+          "isZoomLocked": false,
+          "splitMapViewports": [],
+          "mapViewMode": "MODE_3D",
+          "mapSplitMode": "SWIPE_COMPARE",
+          "globe": {
+            "enabled": false,
+            "config": {
+              "atmosphere": true,
+              "azimuth": false,
+              "azimuthAngle": 45,
+              "terminator": true,
+              "terminatorOpacity": 0.35,
+              "basemap": true,
+              "labels": false,
+              "labelsColor": [
+                132,
+                138,
+                138
+              ],
+              "adminLines": true,
+              "adminLinesColor": [
+                203,
+                205,
+                207
+              ],
+              "water": true,
+              "waterColor": [
+                219,
+                226,
+                230
+              ],
+              "surface": true,
+              "surfaceColor": [
+                235,
+                240,
+                240
+              ]
+            }
           }
-        }
+        },
+        "mapStyle": {
+          "styleType": "light",
+          "topLayerGroups": {},
+          "visibleLayerGroups": {
+            "label": false,
+            "road": true,
+            "border": true,
+            "building": true,
+            "water": true,
+            "land": true,
+            "3d building": false
+          },
+          "threeDBuildingColor": [
+            218.82023004728688,
+            223.47597962276103,
+            223.47597962276103
+          ],
+          "backgroundColor": [
+            255,
+            255,
+            255
+          ],
+          "mapStyles": {}
+        },
       });
       map.setView({
         latitude: 36.7045671093519,

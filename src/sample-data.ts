@@ -1,4 +1,6 @@
-const BASE_URL = `https://4sq-studio-public.s3.us-west-2.amazonaws.com/sdk/examples/sample-data`;
+import { parse } from 'papaparse';
+
+const BASE_URL = `/data`;
 
 export type SampleDataItem = {
   id: string;
@@ -7,14 +9,16 @@ export type SampleDataItem = {
 };
 
 export const fetchSampleData = async (): Promise<[SampleDataItem]> => {
-  const responses = await Promise.all([fetch(`${BASE_URL}/earthquakes.json`)]);
+  const response = await fetch(`${BASE_URL}/data-try-inf.csv`);
+  const text = await response.text();  // Read response as text
+  const { data } = parse(text, { header: true });  // Parse CSV text
 
-  const data = await Promise.all(responses.map(r => r.json()));
+  console.log(data);
   return [
     {
-      id: 'earthquakes',
-      label: 'Earthquakes',
-      data: data[0]
+      id: 'data-try-inf',
+      label: 'Try Inf Data',
+      data: data  // Assuming data is in a suitable format for your application
     }
   ];
 };

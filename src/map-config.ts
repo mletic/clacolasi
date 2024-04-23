@@ -1,4 +1,4 @@
-{
+export const mapConfig = {
     "version": "v1",
     "config": {
       "visState": {
@@ -37,7 +37,7 @@
             "id": "wg37pbj",
             "type": "grid",
             "config": {
-              "dataId": "1d840908-906b-4b1d-9841-8735705c3d43",
+              "dataId": "data-try-inf",
               "label": "1",
               "color": [
                 77,
@@ -108,7 +108,7 @@
             "id": "xzitlx",
             "type": "grid",
             "config": {
-              "dataId": "9d0b0db0-5380-4084-b5bd-84f1ea37c75b",
+              "dataId": "data-try-inf",
               "label": "2",
               "color": [
                 18,

@@ -33,3 +33,6 @@ If you don't use `yarn dev`, you likely would want to use `yarn build` and `yarn
 You can learn more about [setting up a React app with Vite](https://react.dev/learn/add-react-to-an-existing-project) and on the official [Vite webiste](https://vitejs.dev/guide/).
 
 To learn React, check out the [React documentation](https://react.dev/).
+
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+

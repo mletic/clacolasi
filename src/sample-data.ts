@@ -1,6 +1,6 @@
 import {parse} from 'papaparse';
 
-const BASE_URL = `/data`;
+const BASE_URL = `./data`;
 
 export type SampleDataItem = {
   id: string;

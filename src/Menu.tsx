@@ -18,36 +18,81 @@ import {
   StackDivider,
   Text
 } from '@chakra-ui/react';
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
+import Flag from 'react-flagkit';
 
-const engTemplate = [
-  {
-    title: 'Complement size',
-    description: 'This is a description of the section',
-    subsections: [
-      {
-        title: 'TRY',
-        description: 'This is a description of the subsection',
-        files: ['data-try-inf', 'data-try-dpc']
-      },
-      {
-        title: 'DECIDE',
-        description: 'This is a description of the subsection',
-        files: ['data-decide-inf', 'data-decide-dpc']
-      }
-    ]
+const engTemplate = {
+  buttons: {
+    showOnMap: 'Show on map'
   },
-  {
-    title: 'Modality',
-    description: 'This is a description of the section'
+  sections: [
+    {
+      title: 'Complement size',
+      description: 'This is a description of the section',
+      subsections: [
+        {
+          title: 'TRY',
+          description: 'This is a description of the subsection',
+          files: ['data-try-inf', 'data-try-dpc']
+        },
+        {
+          title: 'DECIDE',
+          description: 'This is a description of the subsection',
+          files: ['data-decide-inf', 'data-decide-dpc']
+        }
+      ]
+    },
+    {
+      title: 'Modality',
+      description: 'This is a description of the section'
+    },
+    {
+      title: 'Aspectual verb',
+      description: 'This is a description of the section'
+    }
+  ]
+};
+
+const rsTemplate = {
+  buttons: {
+    showOnMap: 'Prikaži na mapi'
   },
-  {
-    title: 'Aspectual verb',
-    description: 'This is a description of the section'
-  }
-];
+  sections: [
+    {
+      title: 'Veličina komplementa',
+      description: 'Ovo je opis sekcije',
+      subsections: [
+        {
+          title: 'POKUŠATI',
+          description: 'Ovo je opis podsekcije',
+          files: ['data-try-inf', 'data-try-dpc']
+        },
+        {
+          title: 'ODLUČITI',
+          description: 'Ovo je opis podsekcije',
+          files: ['data-decide-inf', 'data-decide-dpc']
+        }
+      ]
+    },
+    {
+      title: 'Modalnost',
+      description: 'Ovo je opis sekcije'
+    },
+    {
+      title: 'Aspektualni glagol',
+      description: 'Ovo je opis sekcije'
+    }
+  ]
+};
 
 export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonClick}) => {
+  const [language, setLanguage] = useState('gb');
+  const [languageVar, setLanguageVar] = useState(engTemplate);
+
+  useEffect(() => {
+    setLanguageVar(language === 'gb' ? engTemplate : rsTemplate);
+  }, [language]);
+
   return (
     <Flex
       position="absolute"
@@ -56,6 +101,7 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
       top="220px"
       left="80px"
       backgroundColor="var(--chakra-colors-chakra-body-bg)"
+      borderRadius="0.5rem"
     >
       <LinkBox as={Flex} padding="1rem" alignItems="center">
         <Image src="/clacolasi/ff-logo.png" alt="logo" width="64px" />
@@ -72,7 +118,7 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
       </LinkBox>
 
       <Accordion allowToggle width="100%">
-        {engTemplate.map((section, index) => (
+        {languageVar.sections.map((section, index) => (
           <AccordionItem key={index}>
             <h2>
               <AccordionButton>
@@ -98,7 +144,7 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
                             size="xs"
                             marginLeft="auto"
                           >
-                            Show on map
+                            {languageVar.buttons.showOnMap}
                           </Button>
                         </Heading>
                         <Text pt="2" fontSize="sm">
@@ -113,6 +159,20 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
           </AccordionItem>
         ))}
       </Accordion>
+      <Flex
+        alignItems="center"
+        padding="0.5rem 1rem"
+        backgroundColor="#b3b3b3"
+        borderBottomRadius="0.5rem"
+      >
+        <Text fontSize="sm">Select language</Text>
+        <Button variant="ghost" onClick={() => setLanguage('gb')}>
+          <Flag country="GB" />
+        </Button>
+        <Button variant="ghost" onClick={() => setLanguage('rs')}>
+          <Flag country="RS" />
+        </Button>
+      </Flex>
     </Flex>
   );
 };

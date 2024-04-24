@@ -19,7 +19,8 @@
     "framer-motion": "^11.1.7",
     "papaparse": "^5.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-flagkit": "^2.0.4"
   },
   "devDependencies": {
     "@types/eslint": "^8.44.2",

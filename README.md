@@ -1,8 +1,14 @@
-# Map SDK Effects example
+# ClaCoLaSI
 
-A Map SDK post-processing effects example.
+This is the main repo for data visualization project for: Clausal Complements between Language Structure and Identity: Documenting, Visualizing, and Theorizing Variation in Shtokavian (Non-)Finite Embedded Clauses (ClaCoLaSI)
 
-This is an example for Foursquare's [Map SDK](https://location.foursquare.com/developer/docs/studio-map-sdk-introduction) that allows you to programmatically render [Foursquare Studio](https://studio.foursquare.com/) maps within your website and with your own data.
+More information on the [project's website](https://www.ff.uns.ac.rs/sr/nauka/projekti/clacolasi).
+
+You can access the live map visualization website [here](https://mletic.github.io/clacolasi/).
+
+# About
+
+The project is created with Foursquare's [Map SDK](https://location.foursquare.com/developer/docs/studio-map-sdk-introduction) that allows you to programmatically render [Foursquare Studio](https://studio.foursquare.com/) maps within your website and with your own data.
 
 The project was bootstrapped with [Vite](https://vitejs.dev/guide/).
 
@@ -27,12 +33,4 @@ Builds and bundles the app for production into the `dist` folder.
 Runs a server to locally preview the production build.
 
 If you don't use `yarn dev`, you likely would want to use `yarn build` and `yarn preview` together.
-
-## Learn More
-
-You can learn more about [setting up a React app with Vite](https://react.dev/learn/add-react-to-an-existing-project) and on the official [Vite webiste](https://vitejs.dev/guide/).
-
-To learn React, check out the [React documentation](https://react.dev/).
-
-# Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 

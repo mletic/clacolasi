@@ -1,3 +1,4 @@
+import {ExternalLinkIcon} from '@chakra-ui/icons';
 import {
   Accordion,
   AccordionButton,
@@ -10,6 +11,10 @@ import {
   CardBody,
   Flex,
   Heading,
+  Image,
+  Link,
+  LinkBox,
+  LinkOverlay,
   Stack,
   StackDivider,
   Text
@@ -47,12 +52,27 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
   return (
     <Flex
       position="absolute"
+      direction="column"
       width="400px"
       top="220px"
       left="80px"
       backgroundColor="var(--chakra-colors-chakra-body-bg)"
     >
-      <Accordion width="100%">
+      <LinkBox as={Flex} padding="1rem" alignItems="center">
+        <Image src="/clacolasi/ff-logo.png" alt="logo" width="64px" />
+        <Text fontSize="2xl" fontWeight="bold" ml="1rem">
+          ClaCoLaSI
+        </Text>
+        <LinkOverlay
+          href="https://www.ff.uns.ac.rs/sr/nauka/projekti/clacolasi"
+          marginLeft="auto"
+          target="_blank"
+        >
+          <ExternalLinkIcon />
+        </LinkOverlay>
+      </LinkBox>
+
+      <Accordion allowToggle width="100%">
         {engTemplate.map((section, index) => (
           <AccordionItem key={index}>
             <h2>

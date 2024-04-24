@@ -1,4 +1,4 @@
-import {ExternalLinkIcon} from '@chakra-ui/icons';
+import {FC, useEffect, useState} from 'react';
 import {
   Accordion,
   AccordionButton,
@@ -18,79 +18,19 @@ import {
   StackDivider,
   Text
 } from '@chakra-ui/react';
-import {FC, useEffect, useState} from 'react';
+import {ExternalLinkIcon} from '@chakra-ui/icons';
 import Flag from 'react-flagkit';
 
-const engTemplate = {
-  buttons: {
-    showOnMap: 'Show on map'
-  },
-  sections: [
-    {
-      title: 'Complement size',
-      description: 'This is a description of the section',
-      subsections: [
-        {
-          title: 'TRY',
-          description: 'This is a description of the subsection',
-          files: ['data-try-inf', 'data-try-dpc']
-        },
-        {
-          title: 'DECIDE',
-          description: 'This is a description of the subsection',
-          files: ['data-decide-inf', 'data-decide-dpc']
-        }
-      ]
-    },
-    {
-      title: 'Modality',
-      description: 'This is a description of the section'
-    },
-    {
-      title: 'Aspectual verb',
-      description: 'This is a description of the section'
-    }
-  ]
-};
-
-const rsTemplate = {
-  buttons: {
-    showOnMap: 'Prikaži na mapi'
-  },
-  sections: [
-    {
-      title: 'Veličina komplementa',
-      description: 'Ovo je opis sekcije',
-      subsections: [
-        {
-          title: 'POKUŠATI',
-          description: 'Ovo je opis podsekcije',
-          files: ['data-try-inf', 'data-try-dpc']
-        },
-        {
-          title: 'ODLUČITI',
-          description: 'Ovo je opis podsekcije',
-          files: ['data-decide-inf', 'data-decide-dpc']
-        }
-      ]
-    },
-    {
-      title: 'Modalnost',
-      description: 'Ovo je opis sekcije'
-    },
-    {
-      title: 'Aspektualni glagol',
-      description: 'Ovo je opis sekcije'
-    }
-  ]
-};
+import {LanguageTemplate, languageTemplates} from './language-templates';
 
 export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonClick}) => {
   const [language, setLanguage] = useState('gb');
-  const [languageVar, setLanguageVar] = useState(engTemplate);
+  const [languageTemplate, setLanguageTemplate] = useState<LanguageTemplate>(
+    languageTemplates['gb']
+  );
 
   useEffect(() => {
-    setLanguageVar(language === 'gb' ? engTemplate : rsTemplate);
+    setLanguageTemplate(languageTemplates[language]);
   }, [language]);
 
   return (
@@ -118,7 +58,7 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
       </LinkBox>
 
       <Accordion allowToggle width="100%">
-        {languageVar.sections.map((section, index) => (
+        {languageTemplate.sections.map((section, index) => (
           <AccordionItem key={index}>
             <h2>
               <AccordionButton>
@@ -135,16 +75,16 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
               <Card>
                 <CardBody>
                   <Stack divider={<StackDivider />} spacing="4">
-                    {section?.subsections?.map((subsection, subsectionIndex) => (
-                      <Box key={`${subsection}-${index}-${subsectionIndex}`}>
-                        <Heading display="flex" size="xs" textTransform="uppercase">
-                          <Text>{subsection.title}</Text>
+                    {section.subsections.map((subsection, subsectionIndex) => (
+                      <Box key={`${subsection.title}-${index}-${subsectionIndex}`}>
+                        <Heading size="xs" textTransform="uppercase" display="flex">
+                          <Text flex="1">{subsection.title}</Text>
                           <Button
                             onClick={() => onButtonClick(subsection.files)}
                             size="xs"
-                            marginLeft="auto"
+                            ml="auto"
                           >
-                            {languageVar.buttons.showOnMap}
+                            {languageTemplate.buttons.showOnMap}
                           </Button>
                         </Heading>
                         <Text pt="2" fontSize="sm">
@@ -159,13 +99,15 @@ export const Menu: FC<{onButtonClick: (files: string[]) => void}> = ({onButtonCl
           </AccordionItem>
         ))}
       </Accordion>
+
       <Flex
         alignItems="center"
         padding="0.5rem 1rem"
         backgroundColor="#b3b3b3"
         borderBottomRadius="0.5rem"
+        gap="1rem"
       >
-        <Text fontSize="sm">Select language</Text>
+        <Text fontSize="sm">{languageTemplate.buttons.selectLanguage}</Text>
         <Button variant="ghost" onClick={() => setLanguage('gb')}>
           <Flag country="GB" />
         </Button>

@@ -13,12 +13,11 @@ export const fetchSampleData = async (fileName: string): Promise<[SampleDataItem
   const text = await response.text(); // Read response as text
   const {data} = parse(text, {header: true}); // Parse CSV text
 
-  console.log(data);
   return [
     {
       id: fileName,
       label: fileName,
-      data: data // Assuming data is in a suitable format for your application
+      data: data
     }
   ];
 };

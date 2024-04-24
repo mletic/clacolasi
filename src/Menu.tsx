@@ -12,7 +12,6 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
   LinkBox,
   LinkOverlay,
   Stack,

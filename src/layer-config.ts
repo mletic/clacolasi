@@ -1,6 +1,6 @@
 import {LayerCreationProps} from '@unfolded/map-sdk';
 
-export const getLayerConfig: LayerCreationProps = (label: string, dataId: string) => {
+export const getLayerConfig = (label: string, dataId: string): LayerCreationProps => {
   return {
     type: 'grid',
     label: label,

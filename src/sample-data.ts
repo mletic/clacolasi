@@ -2,10 +2,20 @@ import {parse} from 'papaparse';
 
 const BASE_URL = `./data`;
 
+interface SampleDataRow {
+  pol: string; // Gender column
+  obrazovanje: string; // Education column
+  mesto_latitude: string; // Latitude column
+  mesto_longitude: string; // Longitude column
+  country: string; // Country column
+  mesto_opstina: string; // Municipality column
+  Language: string; // Language column
+}
+
 export type SampleDataItem = {
   id: string;
   label: string;
-  data: object;
+  data: SampleDataRow[];
 };
 
 export const fetchSampleData = async (fileName: string): Promise<[SampleDataItem]> => {
@@ -17,7 +27,7 @@ export const fetchSampleData = async (fileName: string): Promise<[SampleDataItem
     {
       id: fileName,
       label: fileName,
-      data: data
+      data: data as SampleDataRow[]
     }
   ];
 };

@@ -4,6 +4,7 @@ import {createMap, Layer, MapApi} from '@unfolded/map-sdk';
 import {SampleDataItem, fetchSampleData} from './sample-data';
 import {Menu} from './Menu';
 import {getLayerConfig} from './layer-config';
+import {ChartContainer} from './charts/chart-container';
 
 const FILE_NAMES = [
   'data-try-inf',
@@ -100,7 +101,12 @@ export const App: FC = () => {
   return (
     <>
       <div id="map-container" ref={containerRef} />
-      {map && !loading && <Menu onButtonClick={handleLoadData} />}
+      {map && !loading && (
+        <>
+          <Menu onButtonClick={handleLoadData} />
+          <ChartContainer />
+        </>
+      )}
     </>
   );
 };

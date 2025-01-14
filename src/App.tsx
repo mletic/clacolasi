@@ -1,5 +1,5 @@
 import {FC, useCallback, useEffect, useRef, useState} from 'react';
-import {createMap, Layer, MapApi} from '@unfolded/map-sdk';
+import {createMap, Layer, MapApi} from '@foursquare/map-sdk';
 
 import {SampleDataItem, fetchSampleData} from './sample-data';
 import {Menu} from './Menu';
@@ -35,7 +35,8 @@ export const App: FC = () => {
       if (containerRef.current) {
         const map = await createMap({
           container: containerRef.current,
-          basemaps: {initialMapStyleId: 'light'}
+          basemaps: {initialMapStyleId: 'light'},
+          apiKey: 'fsq3umOBhxg0pTMVWKOWTDonmgFPVSKPSE6LqzYBjP/9e6A='
         });
         setMap(map);
       }

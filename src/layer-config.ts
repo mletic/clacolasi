@@ -1,4 +1,4 @@
-import {LayerCreationProps} from '@unfolded/map-sdk';
+import {LayerCreationProps} from '@foursquare/map-sdk';
 
 export const getLayerConfig = (label: string, dataId: string): LayerCreationProps => {
   return {

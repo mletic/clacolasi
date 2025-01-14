@@ -1288,6 +1288,14 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.0.tgz#a5417ae8427873f1dd08b70b3574b453e67b5f7f"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
+"@foursquare/map-sdk@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@foursquare/map-sdk/-/map-sdk-3.0.4.tgz#9ed3a5ba09c849fb1ba74cc54e42161815933aa0"
+  integrity sha512-hLFBgPk+0ohNPMO1koSMBkNcqVms3glQpytqYZy07CGQZDfiQbhyHxbhHBXRff2K/hAzKOm2Z11qH+5jed9CAg==
+  dependencies:
+    "@types/geojson" "^7946.0.10"
+    csstype "^3.1.0"
+
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -1733,9 +1741,9 @@
   integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
 
 "@types/geojson@^7946.0.10":
-  version "7946.0.14"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.14.tgz#319b63ad6df705ee2a65a73ef042c8271e696613"
-  integrity sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==
+  version "7946.0.15"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.15.tgz#f9d55fd5a0aa2de9dc80b1b04e437538b7298868"
+  integrity sha512-9oSxFzDCT2Rj6DfcHF8G++jxBKS7mBqXl5xrRW+Kbvjry6Uduya2iiwqHPhVXpasAVMBYKkEPGgKhd3+/HZ6xA==
 
 "@types/json-schema@*", "@types/json-schema@^7.0.12":
   version "7.0.15"
@@ -1890,15 +1898,6 @@
   dependencies:
     "@typescript-eslint/types" "6.21.0"
     eslint-visitor-keys "^3.4.1"
-
-"@unfolded/map-sdk@^1.13.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@unfolded/map-sdk/-/map-sdk-1.13.0.tgz#34bddb0ca95f040c070d9de8242b6e1893ba8146"
-  integrity sha512-99yxSeYl/WsJzIcSTmTsywc2RHHMaJ3FRuDEWFTjmw2H3kRP48hkmYV2y/MJxhrJwT8Y63UryEAilSd/FmPhCw==
-  dependencies:
-    "@types/geojson" "^7946.0.10"
-    csstype "^3.1.0"
-    type-fest "^2.12.2"
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
@@ -3293,11 +3292,6 @@ type-fest@^0.20.2:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
-
-type-fest@^2.12.2:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
-  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 typescript@^5.3.2:
   version "5.4.5"

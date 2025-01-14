@@ -58,30 +58,49 @@ export const prepareLanguageData = (
 export const prepareCountryData = (
   sampleDataItem: SampleDataItem
 ): {id: string; label: string; value: number}[] => {
-  // Initialize a record to count occurrences of each country
-  const countryCounts: Record<string, number> = {};
+  const countryMapping: Record<string, string> = {
+    '1': 'Bosnia and Herzegovina',
+    '2': 'Montenegro',
+    '3': 'Croatia',
+    '4': 'Serbia',
+    '5': 'Other',
+    '0': 'Not answered'
+  };
 
-  // Aggregate country counts
-  sampleDataItem.data.forEach((row) => {
-    const country = row.country || 'Unknown'; // Default to 'Unknown' if country is empty
-    countryCounts[country] = (countryCounts[country] || 0) + 1;
-  });
+  const countryCounts: Record<string, number> = sampleDataItem.data.reduce(
+    (acc, row) => {
+      const countryCode = row.country;
+      const country = countryMapping[countryCode] || 'Unknown'; // Use 'Unknown' if the code doesn't match
+      acc[country] = (acc[country] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
 
-  // Convert the aggregated data into an array suitable for charting
-  return Object.entries(countryCounts).map(([country, count]) => ({
-    id: country,
-    label: country,
-    value: count
+  return Object.entries(countryCounts).map(([key, value]) => ({
+    id: key,
+    label: key,
+    value
   }));
 };
 
 export const prepareEducationData = (
   sampleDataItem: SampleDataItem
 ): {name: string; value: number}[] => {
+  const educationMapping: Record<string, string> = {
+    '1': 'Primary',
+    '2': 'Secondary',
+    '3': 'BA',
+    '4': 'MA',
+    '5': 'PhD',
+    '0': 'Not answered'
+  };
+
   const educationCounts: Record<string, number> = sampleDataItem.data.reduce(
     (acc, row) => {
-      const educationLevel = row.obrazovanje || 'Unknown';
-      acc[educationLevel] = (acc[educationLevel] || 0) + 1;
+      const educationCode = row.obrazovanje;
+      const education = educationMapping[educationCode] || 'Unknown'; // Use 'Unknown' if the code doesn't match
+      acc[education] = (acc[education] || 0) + 1;
       return acc;
     },
     {} as Record<string, number>

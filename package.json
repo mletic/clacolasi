@@ -25,6 +25,8 @@
     "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.6",
+    "react-feather": "^2.0.10",
     "react-flagkit": "^2.0.4"
   },
   "devDependencies": {

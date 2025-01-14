@@ -39,6 +39,8 @@ export const App: FC = () => {
           apiKey: 'fsq3umOBhxg0pTMVWKOWTDonmgFPVSKPSE6LqzYBjP/9e6A='
         });
         setMap(map);
+        // @ts-ignore
+        window.myMap = map;
       }
     };
 
@@ -74,6 +76,15 @@ export const App: FC = () => {
         bearing: -7.21
       });
       map.setViewMode('3d');
+
+      map.setMapControlVisibility({
+        legend: false,
+        'map-draw': false,
+        'split-map': true,
+        'toggle-3d': false,
+        chart: false,
+        effect: false
+      });
     }
   }, [map, sampleData]);
 
@@ -105,7 +116,7 @@ export const App: FC = () => {
       {map && !loading && (
         <>
           <Menu onButtonClick={handleLoadData} />
-          <ChartContainer />
+          {/* <ChartContainer /> */}
         </>
       )}
     </>

@@ -15,10 +15,10 @@ export const getLayerConfig = (label: string, dataId: string): LayerCreationProp
         opacity: 0.8,
         worldUnitSize: 9.7403,
         colorRange: {
-          name: 'Global Warming',
-          type: 'sequential',
-          category: 'Uber',
-          colors: ['#FFC300', '#EF9100', '#D6610A', '#B72F15', '#880030', '#4C0035'],
+          name: 'RdYlGn',
+          type: 'diverging',
+          category: 'ColorBrewer',
+          colors: ['#A50026', '#F16E43', '#FEDD8D', '#D7EE8E', '#64BC61', '#006837'],
           reversed: true
         },
         coverage: 1,

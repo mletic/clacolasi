@@ -10,7 +10,10 @@ const BarChart = ({data}: {data: any}) => (
       padding={0.3}
       valueScale={{type: 'linear'}}
       indexScale={{type: 'band', round: true}}
-      colors={{scheme: 'nivo'}}
+      colors={({index}) => {
+        const colors = ['#e8c1a0', '#f47560', '#f1e15b', '#e8a838', '#61cdbb'];
+        return colors[index % colors.length];
+      }}
       borderColor={{from: 'color', modifiers: [['darker', 1.6]]}}
       axisTop={null}
       axisRight={null}

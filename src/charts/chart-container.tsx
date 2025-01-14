@@ -26,7 +26,7 @@ export const ChartContainer: FC = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      const dataItem = await fetchSampleData('data-try-dpc');
+      const dataItem = await fetchSampleData('chart-data');
       setSampleDataItem(dataItem);
     };
 
@@ -44,15 +44,7 @@ export const ChartContainer: FC = () => {
   }, [sampleDataItem]);
 
   return (
-    <Flex
-      position="absolute"
-      direction="column"
-      minWidth="400px"
-      top="16px"
-      right="80px"
-      backgroundColor="var(--chakra-colors-chakra-body-bg)"
-      borderRadius="0.5rem"
-    >
+    <Flex>
       <Tabs size="sm">
         <TabList>
           <Tab>Language</Tab>

@@ -47,7 +47,7 @@ export const languageTemplates: LanguageTemplates = {
         description: 'This is a description of the section',
         subsections: [
           {
-            title: 'DENOTIC',
+            title: 'DEONTIC',
             description: 'This is a description of the subsection',
             files: ['data-denotic-inf', 'data-denotic-dpc']
           },

@@ -4,7 +4,6 @@ import {createMap, Layer, MapApi} from '@foursquare/map-sdk';
 import {SampleDataItem, fetchSampleData} from './sample-data';
 import {Menu} from './Menu';
 import {getLayerConfig} from './layer-config';
-import {ChartContainer} from './charts/chart-container';
 
 const FILE_NAMES = [
   'data-try-inf',
